@@ -8,8 +8,7 @@ app = Flask(__name__)
 def hello_world():
     return render_template('index.html')
     return None
-if nne:
-    go
+
 
 
 @app.route('/health')

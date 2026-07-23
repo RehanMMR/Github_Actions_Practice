@@ -1,16 +1,14 @@
-# This code is from https://github.com/LondheShubham153/flask-app-ecs.git
-# From Flask
-from flask import Flask, render_template
+from flask import Flask, jsonify
+
 app = Flask(__name__)
 
+@app.route("/")
+def home():
+    return jsonify({"message": "Hello from Dockerized GitHub Actions CI/CD App!", "status": "success"})
 
-@app.route('/')
-def hello_world():
-    return render_template('index.html')
-    return None
-
-
-
-@app.route('/health')
+@app.route("/health")
 def health():
-    return 'Server is up and running'
+    return jsonify({"status": "healthy"})
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
